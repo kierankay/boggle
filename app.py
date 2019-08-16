@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, redirect, session, flash
+from flask import Flask, request, render_template, redirect, session, flash, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from boggle import Boggle
 
@@ -29,4 +29,10 @@ def start_game():
     return render_template('index.html')
 
 
-
+@app.route('/submitguess', methods=["POST"])
+def check_guess():
+    """Check if the submitted guess is in the dictionary and on the board"""
+    guess = request.json['guess']
+    response = boggle_game.check_valid_word(session['board'], guess)
+    json_response = jsonify(result=response)
+    return json_response
