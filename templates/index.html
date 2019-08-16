@@ -11,6 +11,8 @@
 </head>
 
 <body>
+    <p><span>Time: </span><span id="timer">60</span></p>
+    <p><span>Score: </span><span id="score-num">0</span></p>
     <table>
         {% for row in session["board"] %}
         <tr>
@@ -21,7 +23,7 @@
         {% endfor %}
     </table>
 
-    <form id="submit-guess" method="POST">
+    <form id="submit-guess">
         <input type="text" name="guess">
         <button type="submit" id="submit">Submit Guess</button>
     </form>
