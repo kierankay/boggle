@@ -10,3 +10,10 @@ app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 
 debug = DebugToolbarExtension(app)
 
+
+@app.route('/')
+def start_game():
+    """Display game board"""
+    return render_template('/index.html')
+
+
